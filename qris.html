@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -22,22 +23,28 @@
             }
         }
     </script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
         body {
             background: radial-gradient(circle at center, #11140e 0%, #030304 100%);
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
+
         .cyber-card {
             background: linear-gradient(135deg, rgba(14, 16, 21, 0.98) 0%, rgba(5, 5, 5, 1) 100%);
             border: 2px solid rgba(163, 221, 2, 0.35);
             box-shadow: 0 0 35px rgba(163, 221, 2, 0.15), inset 0 0 20px rgba(163, 221, 2, 0.05);
+            transition: all 0.5s ease-in-out;
         }
+
         @keyframes laserScan {
             0%, 100% { top: 2%; opacity: 0.05; }
             50% { top: 98%; opacity: 0.6; }
         }
+
         .scan-line {
             position: absolute; left: 8px; right: 8px; height: 3px; background: #a3dd02;
             box-shadow: 0 0 10px #a3dd02, 0 0 20px #a3dd02; animation: laserScan 4s ease-in-out infinite;
@@ -57,11 +64,17 @@
     </div>
 
     <div class="w-full max-w-sm space-y-4 z-10">
+        
         <div class="cyber-card p-6 rounded-[2.5rem] relative overflow-hidden text-center">
+            
             <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brandLime opacity-60"></div>
             <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brandLime opacity-60"></div>
             <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-brandLime opacity-60"></div>
             <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brandLime opacity-60"></div>
+
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
+
             <div class="scan-line"></div>
 
             <div class="flex justify-between items-center mb-5 px-1">
@@ -69,99 +82,221 @@
                     <span class="text-[11px] font-black tracking-widest text-brandLime uppercase leading-none">QRIS STANDAR</span>
                     <span class="text-[7.5px] font-bold text-zinc-500 uppercase tracking-tighter leading-none mt-1">Pembayaran Nasional</span>
                 </div>
-                <div class="flex items-center justify-center gap-1.5 bg-zinc-950 px-2.5 rounded-lg border border-zinc-900 h-7">
+                <div class="flex items-center justify-center gap-1.5 bg-zinc-950 px-2.5 rounded-lg border border-zinc-900 h-7 box-border">
                     <span class="w-1.5 h-1.5 rounded-full bg-brandLime animate-pulse"></span>
-                    <span class="text-[9px] font-black text-white tracking-widest data-v">GPN</span>
+                    <span class="text-[9px] font-black text-white tracking-widest leading-none translate-y-[0.5px]">GPN</span>
                 </div>
             </div>
 
             <div class="flex flex-col items-center gap-3 mb-6">
                 <h2 class="text-3xl font-black text-white tracking-widest uppercase leading-none">REXITH</h2>
-                <div class="flex items-center justify-center bg-brandLime/10 border border-brandLime/20 px-3 rounded-md h-7">
-                    <p class="text-[9px] font-mono font-bold text-brandLime tracking-wide">NMID: ID1026536065695</p>
+                <div class="flex items-center justify-center bg-brandLime/10 border border-brandLime/20 px-3 rounded-md h-7 box-border">
+                    <p class="text-[9px] font-mono font-bold text-brandLime tracking-wide leading-none">NMID: ID1026536065695</p>
                 </div>
             </div>
 
-            <div class="relative w-64 h-64 mx-auto bg-white rounded-3xl p-4 flex items-center justify-center border-2 border-brandLime shadow-[0_0_30px_rgba(163,221,2,0.3)] overflow-hidden">
-                <canvas id="qris-qr-code" class="w-full h-full object-contain"></canvas>
+            <div class="relative w-64 h-64 mx-auto bg-white rounded-3xl p-4 flex items-center justify-center border-2 border-brandLime shadow-[0_0_30px_rgba(163,221,2,0.3)] overflow-hidden bg-white">
+                <div class="w-full h-full rounded-xl overflow-hidden bg-white flex items-center justify-center p-1">
+                    <canvas id="qris-qr-code" class="w-full h-full object-contain"></canvas>
+                </div>
             </div>
 
             <div class="mt-6 space-y-4">
-                <p class="text-xs font-black text-white uppercase tracking-widest">SATU QRIS UNTUK SEMUA</p>
-                <p class="text-[9px] text-zinc-500 font-semibold tracking-wide">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
+                <div class="space-y-1">
+                    <p class="text-xs font-black text-white uppercase tracking-widest">SATU QRIS UNTUK SEMUA</p>
+                    <p class="text-[9px] text-zinc-500 font-semibold tracking-wide">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 pt-1.5 border-t border-zinc-900/60">
+                    <div class="bg-zinc-950/80 py-1.5 rounded-lg border border-zinc-900 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-wallet text-brandLime text-xs mb-0.5"></i>
+                        <span class="text-[7px] font-black uppercase text-zinc-500">E-Wallet</span>
+                    </div>
+                    <div class="bg-zinc-950/80 py-1.5 rounded-lg border border-zinc-900 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-building-columns text-brandLime text-xs mb-0.5"></i>
+                        <span class="text-[7px] font-black uppercase text-zinc-500">M-Bank</span>
+                    </div>
+                    <div class="bg-zinc-950/80 py-1.5 rounded-lg border border-zinc-900 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-brandLime text-xs mb-0.5"></i>
+                        <span class="text-[7px] font-black uppercase text-zinc-500">Aman</span>
+                    </div>
+                    <div class="bg-zinc-950/80 py-1.5 rounded-lg border border-zinc-900 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-bolt text-brandLime text-xs mb-0.5"></i>
+                        <span class="text-[7px] font-black uppercase text-zinc-500">Instan</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 text-[8px] text-zinc-600 font-black uppercase tracking-wider flex justify-center items-center gap-1.5">
+                    <span>⚡ REXITH OFFICIAL PAYMENT</span>
+                    <span>•</span>
+                    <span>100% SECURE</span>
+                </div>
             </div>
         </div>
 
         <div class="bg-zinc-950/85 border border-zinc-900 rounded-2xl p-4 space-y-3 text-left">
             <div class="flex items-center justify-between">
                 <p class="text-[11px] font-black text-brandLime uppercase tracking-widest flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brandLime animate-ping"></span> SINKRON KODE
+                    <span class="w-1.5 h-1.5 rounded-full bg-brandLime animate-ping"></span>
+                    SINKRONISASI KODE QRIS
                 </p>
-                <button onclick="document.getElementById('qr-file-input').click()" class="bg-brandLime/10 hover:bg-brandLime text-brandLime hover:text-zinc-950 border border-brandLime/30 px-3 py-1.5 rounded-lg text-[9px] font-black transition-all duration-300">UPLOAD IMAGE</button>
+                <button onclick="document.getElementById('qr-file-input').click()" class="bg-brandLime/10 hover:bg-brandLime text-brandLime hover:text-zinc-950 border border-brandLime/30 px-3 py-1.5 rounded-lg text-[9px] font-black transition-all duration-300">
+                    <i class="fa-solid fa-upload mr-1"></i> PILIH GAMBAR
+                </button>
                 <input type="file" id="qr-file-input" class="hidden" accept="image/*" onchange="processQRImage(this)">
             </div>
+            <p class="text-[9px] text-zinc-500 leading-relaxed">
+                Pilih file asli <span class="text-zinc-300 font-bold">no_markReactNative-snapshot-image_1.png</span> untuk menyelaraskan koordinat pixel & data QRIS asli anda secara otomatis!
+            </p>
             <div id="sync-status" class="hidden p-2 rounded-lg bg-zinc-900 text-[10px] font-mono break-all text-zinc-400"></div>
         </div>
 
-        <button onclick="downloadQRIS()" class="w-full bg-brandLime hover:bg-white text-zinc-950 font-black text-sm uppercase py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg">
+        <div class="bg-zinc-950/50 border border-zinc-900 rounded-xl p-3 text-center">
+            <p class="text-[10px] text-zinc-500 font-medium">
+                <i class="fa-regular fa-lightbulb text-brandLime mr-1"></i>
+                Tips: Jika sulit di-scan, silakan naikkan tingkat kecerahan layar perangkat Anda!
+            </p>
+        </div>
+
+        <button onclick="downloadQRIS()" class="w-full bg-brandLime hover:bg-white text-zinc-950 font-black text-sm uppercase py-4 px-6 rounded-2xl transition-all duration-300 shadow-[0_10px_25px_rgba(163,221,2,0.3)] flex items-center justify-center gap-3">
             <i class="fa-solid fa-download text-lg animate-bounce"></i> Unduh Gambar (PNG)
         </button>
     </div>
 
     <div style="position: absolute; left: -9999px; top: -9999px;">
-        <div id="qris-download-template" style="width: 450px; height: 680px; padding: 30px; background: linear-gradient(135deg, #0e1015 0%, #050505 100%); border: 3px solid #a3dd02; border-radius: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <div style="text-align: left;"><span style="font-size: 13px; font-weight: 900; color: #a3dd02;">QRIS STANDAR</span></div>
-                <div style="background-color: #000; padding: 0 12px; height: 28px; border-radius: 10px; color: #fff; font-size: 11px; font-weight: 900;">GPN</div>
+        <div id="qris-download-template" style="width: 450px; height: 680px; padding: 30px; box-sizing: border-box; background: linear-gradient(135deg, #0e1015 0%, #050505 100%); border: 3px solid #a3dd02; border-radius: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; position: relative; overflow: hidden; text-align: center;">
+            <div style="position: absolute; top: 0; left: 0; width: 35px; height: 35px; border-top: 3px solid #a3dd02; border-left: 3px solid #a3dd02;"></div>
+            <div style="position: absolute; top: 0; right: 0; width: 35px; height: 35px; border-top: 3px solid #a3dd02; border-right: 3px solid #a3dd02;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 35px; height: 35px; border-bottom: 3px solid #a3dd02; border-left: 3px solid #a3dd02;"></div>
+            <div style="position: absolute; bottom: 0; right: 0; width: 35px; height: 35px; border-bottom: 3px solid #a3dd02; border-right: 3px solid #a3dd02;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 10px;">
+                <div style="text-align: left; display: flex; flex-direction: column;">
+                    <span style="font-size: 13px; font-weight: 900; letter-spacing: 0.15em; color: #a3dd02; line-height: 1.1;">QRIS STANDAR</span>
+                    <span style="font-size: 8.5px; font-weight: 700; color: #71717a; letter-spacing: -0.02em; margin-top: 2px;">Pembayaran Nasional</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 6px; background-color: #000; padding: 0 12px; height: 28px; border-radius: 10px; border: 1px solid #27272a; box-sizing: border-box;">
+                    <span style="display: block; width: 6px; height: 6px; border-radius: 50%; background-color: #a3dd02;"></span>
+                    <span style="font-size: 11px; font-weight: 900; color: #fff; letter-spacing: 0.05em; line-height: 1; display: block; margin-top: 1px;">GPN</span>
+                </div>
             </div>
-            <h2 style="font-size: 36px; font-weight: 900; color: #fff; margin: 0;">REXITH</h2>
-            <div style="width: 260px; height: 260px; background-color: #fff; border-radius: 28px; padding: 16px; display: flex; align-items: center; justify-content: center; border: 2px solid #a3dd02;">
-                <img id="qris-export-image" src="" alt="QRIS" style="width: 100%; height: 100%; object-fit: contain;" />
+
+            <div style="margin-bottom: 5px; display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%;">
+                <h2 style="font-size: 36px; font-weight: 900; color: #fff; letter-spacing: 0.15em; margin: 0; text-transform: uppercase; line-height: 1.1;">REXITH</h2>
+                <div style="display: flex; align-items: center; justify-content: center; background-color: rgba(163, 221, 2, 0.1); border: 1px solid rgba(163, 221, 2, 0.2); padding: 0 14px; height: 28px; border-radius: 8px; box-sizing: border-box;">
+                    <p style="font-size: 10px; font-family: monospace; font-weight: 700; color: #a3dd02; letter-spacing: 0.05em; margin: 0; line-height: 1;">NMID: ID1026536065695</p>
+                </div>
             </div>
-            <div style="font-size: 9px; font-weight: 900; color: #52525b;">⚡ REXITH OFFICIAL PAYMENT • 100% SECURE</div>
+
+            <div style="width: 260px; height: 260px; background-color: #ffffff; border-radius: 28px; padding: 16px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid #a3dd02; box-shadow: 0 0 25px rgba(163, 221, 2, 0.2); overflow: hidden;">
+                <img id="qris-export-image" src="" alt="QRIS Code" style="width: 100%; height: 100%; object-fit: contain; image-rendering: -webkit-optimize-contrast;" />
+            </div>
+
+            <div style="width: 100%; margin-top: 10px;">
+                <div style="margin-bottom: 15px;">
+                    <p style="font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 0.1em; margin: 0;">SATU QRIS UNTUK SEMUA</p>
+                    <p style="font-size: 10px; color: #a1a1aa; font-weight: 600; letter-spacing: 0.02em; margin-top: 4px;">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding-top: 15px; border-top: 1px solid rgba(39, 39, 42, 0.6); margin-bottom: 15px;">
+                    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">E-Wallet</span>
+                    </div>
+                    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">M-Bank</span>
+                    </div>
+                    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Aman</span>
+                    </div>
+                    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Instan</span>
+                    </div>
+                </div>
+
+                <div style="font-size: 9px; font-weight: 900; color: #52525b; letter-spacing: 0.12em; text-transform: uppercase;">
+                    ⚡ REXITH OFFICIAL PAYMENT • 100% SECURE
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        // ==========================================
+        // INSTALASI GENERATOR QRIS & DECODER LOKAL
+        // ==========================================
         let qrGenerator = null;
         let qrisDataString = '00020101021126610016ID.CO.SHOPEE.WWW01189360091800232225040208232225040303UMI51440014ID.CO.QRIS.WWW0215ID10265360656950303UMI5204581653033605802ID5906REXITH6005DEMAK61055956762070703A0163045663';
 
-        if(localStorage.getItem('qris_string_rexith')) { qrisDataString = localStorage.getItem('qris_string_rexith'); }
+        if(localStorage.getItem('qris_string_rexith')) {
+            qrisDataString = localStorage.getItem('qris_string_rexith');
+        }
 
         window.addEventListener('DOMContentLoaded', () => {
             initQRCode(qrisDataString);
-            if(localStorage.getItem('qris_string_rexith')) { showSuccessStatus(qrisDataString); }
+            if(localStorage.getItem('qris_string_rexith')) {
+                showSuccessStatus(qrisDataString);
+            }
         });
 
         function initQRCode(dataText) {
-            qrGenerator = new QRious({
-                element: document.getElementById('qris-qr-code'),
-                value: dataText, size: 400, background: '#ffffff', foreground: '#000000', level: 'H'
-            });
-            document.getElementById('qris-export-image').src = qrGenerator.toDataURL();
+            try {
+                qrGenerator = new QRious({
+                    element: document.getElementById('qris-qr-code'),
+                    value: dataText,
+                    size: 400,
+                    background: '#ffffff',
+                    foreground: '#000000',
+                    level: 'H'
+                });
+
+                const qrisImgExport = document.getElementById('qris-export-image');
+                qrisImgExport.src = qrGenerator.toDataURL();
+            } catch (err) {
+                console.error("Gagal menggambar QR Code:", err);
+            }
         }
 
         function processQRImage(input) {
             const statusDiv = document.getElementById('sync-status');
             statusDiv.classList.remove('hidden');
-            statusDiv.innerHTML = '<span>Menguraikan...</span>';
+            statusDiv.innerHTML = '<span class="text-brandLime"><i class="fa-solid fa-spinner animate-spin mr-1.5"></i> Menguraikan sirkuit QRIS...</span>';
+
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     const img = new Image();
                     img.onload = function () {
-                        const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                        canvas.width = img.width; canvas.height = img.height;
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
                         ctx.drawImage(img, 0, 0, img.width, img.height);
+                        
                         const imageData = ctx.getImageData(0, 0, img.width, img.height);
                         const code = jsQR(imageData.data, imageData.width, imageData.height);
+                        
                         if (code) {
-                            qrisDataString = code.data; localStorage.setItem('qris_string_rexith', qrisDataString);
+                            qrisDataString = code.data;
+                            localStorage.setItem('qris_string_rexith', qrisDataString);
+                            
                             qrGenerator.value = qrisDataString;
                             document.getElementById('qris-export-image').src = qrGenerator.toDataURL();
+                            
                             showSuccessStatus(qrisDataString);
                         } else {
-                            statusDiv.innerHTML = '<span class="text-red-500">Gagal memindai gambar!</span>';
+                            statusDiv.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Gagal memindai gambar! Pastikan area QR Code terunggah dengan jelas & tegak lurus.</span>';
                         }
                     };
                     img.src = e.target.result;
@@ -173,34 +308,67 @@
         function showSuccessStatus(stringData) {
             const statusDiv = document.getElementById('sync-status');
             statusDiv.classList.remove('hidden');
-            statusDiv.innerHTML = `<div class="text-brandLime font-bold">SINKRONISASI AKTIF!</div><div class="text-[8px] break-all">${stringData}</div>`;
+            statusDiv.innerHTML = `
+                <div class="text-brandLime font-bold mb-1"><i class="fa-solid fa-circle-check"></i> SINKRONISASI AKTIF!</div>
+                <div class="text-[9px] text-zinc-500 mb-1 leading-normal">QR Code saat ini 100% akurat & terkalibrasi secara siber dengan data asli tokomu.</div>
+                <div class="bg-black/50 p-1.5 rounded border border-zinc-900 text-[8px] select-all cursor-pointer font-mono break-all text-zinc-300">
+                    ${stringData}
+                </div>
+            `;
         }
 
         function downloadQRIS() {
             const targetTemplate = document.getElementById('qris-download-template');
-            html2canvas(targetTemplate, { useCORS: true, scale: 3, backgroundColor: '#050505', width: 450, height: 680 }).then(canvas => {
-                const link = document.createElement('a'); link.download = 'QRIS_REXITH_CYBER_PREMIUM.png';
-                link.href = canvas.toDataURL('image/png'); link.click();
+            const options = { useCORS: true, scale: 3, backgroundColor: '#050505', width: 450, height: 680, logging: false };
+
+            html2canvas(targetTemplate, options).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'QRIS_REXITH_CYBER_PREMIUM.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error("Gagal melakukan penulisan berkas PNG:", err);
             });
         }
 
-        // Script Animasi Beams Latar Belakang Tetap Ada
+        // ==========================================
+        // SKRIP ANIMASI LATAR BELAKANG GRID BEAMS
+        // ==========================================
         const canvas = document.getElementById('grid-beams');
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
         const gridSize = 40; const beams = []; const maxBeams = 14;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
         class Beam {
             constructor() { this.reset(); }
             reset() {
                 this.type = Math.random() > 0.5 ? 'H' : 'V';
-                this.speed = (Math.random() * 2 + 2.5) * (Math.random() > 0.5 ? 1 : -1); this.length = Math.random() * 120 + 100;
-                if (this.type === 'H') { this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize; this.x = this.speed > 0 ? -this.length : width + this.length; }
-                else { this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize; this.y = this.speed > 0 ? -this.length : height + this.length; }
+                const baseSpeed = Math.random() * 2 + 2.5;
+                this.direction = Math.random() > 0.5 ? 1 : -1;
+                this.speed = baseSpeed * this.direction; this.length = Math.random() * 120 + 100;
+                if (this.type === 'H') {
+                    this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize;
+                    this.x = this.speed > 0 ? -this.length : width + this.length;
+                } else {
+                    this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize;
+                    this.y = this.speed > 0 ? -this.length : height + this.length;
+                }
                 this.alpha = Math.random() * 0.4 + 0.5;
             }
             update() {
-                if (this.type === 'H') { this.x += this.speed; if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) this.reset(); }
-                else { this.y += this.speed; if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) this.reset(); }
+                if (this.type === 'H') {
+                    this.x += this.speed;
+                    if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) this.reset();
+                } else {
+                    this.y += this.speed;
+                    if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) this.reset();
+                }
             }
             draw() {
                 ctx.save(); ctx.globalAlpha = this.alpha;
@@ -213,6 +381,7 @@
                 ctx.stroke(); ctx.restore();
             }
         }
+
         for (let i = 0; i < maxBeams; i++) { setTimeout(() => { beams.push(new Beam()); }, i * 250); }
         function animate() { ctx.clearRect(0, 0, width, height); beams.forEach(beam => { beam.update(); beam.draw(); }); requestAnimationFrame(animate); }
         animate();
