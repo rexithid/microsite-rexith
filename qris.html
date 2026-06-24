@@ -54,6 +54,9 @@
 </head>
 <body class="text-slate-300 min-h-screen flex flex-col items-center justify-start p-4 md:p-8 relative selection-none">
 
+    <!-- Top Fake Loading Bar -->
+
+    <div id="top-loading-bar" class="fixed top-0 left-0 h-[3px] bg-brandLime shadow-[0_0_10px_#a3dd02,0_0_20px_#a3dd02] z-50 transition-all duration-500 ease-out w-0"></div>
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0"></div>
     <canvas id="grid-beams" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-90"></canvas>
 
@@ -385,6 +388,17 @@
         for (let i = 0; i < maxBeams; i++) { setTimeout(() => { beams.push(new Beam()); }, i * 250); }
         function animate() { ctx.clearRect(0, 0, width, height); beams.forEach(beam => { beam.update(); beam.draw(); }); requestAnimationFrame(animate); }
         animate();
+
+        window.addEventListener('DOMContentLoaded', () => {
+    const loader = document.getElementById('top-loading-bar');
+    loader.style.width = '70%'; // Jalan sampai 70% saat DOM siap
+});
+
+window.addEventListener('load', () => {
+    const loader = document.getElementById('top-loading-bar');
+    loader.style.width = '100%'; // Penuh 100% saat semua aset selesai
+    setTimeout(() => { loader.style.opacity = '0'; }, 400); // Hilang smooth
+});
     </script>
 </body>
 </html>
