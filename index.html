@@ -6,7 +6,6 @@
     <title>Rexith Official</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script>
         tailwind.config = {
             theme: {
@@ -22,78 +21,42 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-        
         body {
             background: radial-gradient(circle at center, #11140e 0%, #030304 100%);
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
         @keyframes logoIntro {
             0% { transform: scale(0.8) rotate(-10deg); opacity: 0; filter: blur(10px); }
             100% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0px); }
         }
-
         @keyframes floatAndGlow {
-            0%, 100% { 
-                transform: translateY(0); 
-                filter: drop-shadow(0 0 15px rgba(163, 221, 2, 0.35));
-            }
-            50% { 
-                transform: translateY(-8px); 
-                filter: drop-shadow(0 0 30px rgba(163, 221, 2, 0.65));
-            }
+            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 15px rgba(163, 221, 2, 0.35)); }
+            50% { transform: translateY(-8px); filter: drop-shadow(0 0 30px rgba(163, 221, 2, 0.65)); }
         }
-
         @keyframes contentFadeIn {
             0% { transform: translateY(20px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
         .logo-animation {
-            animation: logoIntro 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-                       floatAndGlow 4s ease-in-out infinite 1.2s;
+            animation: logoIntro 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, floatAndGlow 4s ease-in-out infinite 1.2s;
         }
-
-        .content-animation {
-            opacity: 0;
-            animation: contentFadeIn 0.8s ease-out forwards;
-        }
-
+        .content-animation { opacity: 0; animation: contentFadeIn 0.8s ease-out forwards; }
         .delay-1 { animation-delay: 0.4s; }
         .delay-2 { animation-delay: 0.6s; }
-        .delay-3 { animation-delay: 0.8s; }
-        .delay-4 { animation-delay: 1.0s; }
-        
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #222;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a3dd02;
-        }
-
-        .glass-card {
-            background: rgba(14, 16, 21, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a3dd02; }
+        .glass-card { background: rgba(14, 16, 21, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.03); }
     </style>
 </head>
-<body class="text-slate-300 min-h-screen flex flex-col items-center justify-start p-4 md:p-8 relative">
+<body class="text-slate-300 min-h-screen flex flex-col items-center justify-start p-4 md:p-8 relative selection-none">
 
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0"></div>
-    
     <canvas id="grid-beams" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-90"></canvas>
 
-    <div class="w-full max-w-xl z-10 space-y-6 my-auto">
-        
+    <div id="main-container" class="w-full max-w-xl z-10 space-y-6 my-auto">
         <div class="glass-card p-8 rounded-[2.5rem] border border-zinc-800/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-center relative overflow-hidden">
             <div class="absolute -top-24 -left-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -101,7 +64,6 @@
             <div class="logo-animation relative w-44 h-44 mx-auto mb-6 flex items-center justify-center">
                 <div class="absolute inset-0 rounded-full border-2 border-dashed border-brandLime/40 animate-[spin_30s_linear_infinite]"></div>
                 <div class="absolute inset-2 rounded-full border border-brandLime/25"></div>
-                
                 <div class="w-[85%] h-[85%] rounded-full overflow-hidden border-2 border-brandLime bg-zinc-950 flex items-center justify-center shadow-[0_0_25px_rgba(163,221,2,0.4)] relative group">
                     <svg class="w-[75%] h-[75%] transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -114,7 +76,6 @@
                         <line x1="50" y1="50" x2="50" y2="65" stroke="#a3dd02" stroke-width="2.5" filter="url(#glow-effect)" />
                         <line x1="50" y1="50" x2="35" y2="50" stroke="#a3dd02" stroke-width="2.5" filter="url(#glow-effect)" />
                         <line x1="50" y1="50" x2="65" y2="50" stroke="#a3dd02" stroke-width="2.5" filter="url(#glow-effect)" />
-                        
                         <line x1="50" y1="35" x2="33" y2="33" stroke="#a3dd02" stroke-width="1.8" />
                         <line x1="50" y1="35" x2="67" y2="33" stroke="#a3dd02" stroke-width="1.8" />
                         <line x1="50" y1="35" x2="38" y2="20" stroke="#a3dd02" stroke-width="1.8" />
@@ -131,33 +92,7 @@
                         <line x1="65" y1="50" x2="67" y2="67" stroke="#a3dd02" stroke-width="1.8" />
                         <line x1="65" y1="50" x2="80" y2="38" stroke="#a3dd02" stroke-width="1.8" />
                         <line x1="65" y1="50" x2="80" y2="62" stroke="#a3dd02" stroke-width="1.8" />
-
-                        <line x1="25" y1="25" x2="38" y2="20" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="25" y1="25" x2="20" y2="38" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="25" y1="25" x2="33" y2="33" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="38" y1="20" x2="33" y2="33" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="20" y1="38" x2="33" y2="33" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="75" y1="25" x2="62" y2="20" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="75" y1="25" x2="80" y2="38" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="75" y1="25" x2="67" y2="33" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="62" y1="20" x2="67" y2="33" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="80" y1="38" x2="67" y2="33" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="25" y1="75" x2="38" y2="80" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="25" y1="75" x2="20" y2="62" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="25" y1="75" x2="33" y2="67" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="38" y1="80" x2="33" y2="67" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="20" y1="62" x2="33" y2="67" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="75" y1="75" x2="62" y2="80" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="75" y1="75" x2="80" y2="62" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="75" y1="75" x2="67" y2="67" stroke="#a3dd02" stroke-width="2" />
-                        <line x1="62" y1="80" x2="67" y2="67" stroke="#a3dd02" stroke-width="1.5" />
-                        <line x1="80" y1="62" x2="67" y2="67" stroke="#a3dd02" stroke-width="1.5" />
-
                         <circle cx="50" cy="50" r="4.5" fill="#a3dd02" filter="url(#glow-effect)" />
-                        <circle cx="50" cy="35" r="3.5" fill="#a3dd02" />
-                        <circle cx="50" cy="65" r="3.5" fill="#a3dd02" />
-                        <circle cx="35" cy="50" r="3.5" fill="#a3dd02" />
-                        <circle cx="65" cy="50" r="3.5" fill="#a3dd02" />
                         <circle cx="25" cy="25" r="4" fill="#a3dd02" filter="url(#glow-effect)" />
                         <circle cx="38" cy="20" r="3.5" fill="#a3dd02" />
                         <circle cx="20" cy="38" r="3.5" fill="#a3dd02" />
@@ -186,41 +121,27 @@
                     <span class="w-2 h-2 rounded-full bg-brandLime animate-pulse"></span>
                 </div>
                 <p class="text-zinc-400 text-sm max-w-sm mx-auto leading-relaxed">
-                    Selamat datang di REXITH, solusi lengkap untuk segala kebutuhan digital Anda. Kami menyediakan layanan berkualitas dengan proses cepat, harga bersaing, dan bergaransi, Kami siap membantu mengembangkan bisnis dan hobi digital Anda.
+                    Selamat datang di REXITH, solusi lengkap untuk segala kebutuhan digital Anda. Kami menyediakan layanan berkualitas dengan proses cepat, harga bersaing, dan bergaransi.
                 </p>
             </div>
 
             <div class="content-animation delay-2 flex justify-center gap-6 mt-6 text-xl">
-                <a href="https://instagram.com/rexith.id" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md" title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://tiktok.com/@rexith.id" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61590860697980" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md" title="Facebook">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/6282134795760" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md" title="WhatsApp Admin">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
+                <a href="https://instagram.com/rexith.id" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@rexith.id" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61590860697980" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/6282134795760" target="_blank" class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-brandLime hover:border-brandLime hover:-translate-y-1 transition-all duration-300 shadow-md"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
 
         <div class="content-animation delay-2 flex gap-2 bg-zinc-950 p-1.5 rounded-2xl border border-zinc-900">
-            <button onclick="switchTab('links')" id="btn-links" class="tab-btn flex-1 py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 bg-brandLime text-zinc-950">
-                🔗 Komunitas
-            </button>
-            <button onclick="switchTab('catalog')" id="btn-catalog" class="tab-btn flex-1 py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 text-zinc-500 hover:text-white">
-                🎮 Layanan
-            </button>
+            <button onclick="switchTab('links')" id="btn-links" class="tab-btn flex-1 py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 bg-brandLime text-zinc-950">🔗 Komunitas</button>
+            <button onclick="switchTab('catalog')" id="btn-catalog" class="tab-btn flex-1 py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 text-zinc-500 hover:text-white">🎮 Layanan</button>
         </div>
 
         <div id="tab-links" class="space-y-4">
             <a href="https://chat.whatsapp.com/IKuZyV8SZbn2quljw7DUSH" target="_blank" class="glass-card flex items-center justify-between w-full p-5 hover:bg-brandLime hover:text-zinc-950 border border-zinc-850 hover:border-brandLime rounded-2xl transition-all duration-300 transform hover:-translate-y-1 group shadow-lg">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-zinc-900/80 flex items-center justify-center text-brandLime group-hover:bg-zinc-950 group-hover:text-brandLime transition-colors">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-zinc-900/80 flex items-center justify-center text-brandLime group-hover:bg-zinc-950 group-hover:text-brandLime transition-colors"><i class="fa-brands fa-whatsapp text-2xl"></i></div>
                     <div class="text-left">
                         <h3 class="font-extrabold text-sm tracking-wide">GRUP TOKO</h3>
                         <p class="text-xs text-zinc-500 group-hover:text-zinc-800 transition-colors mt-0.5">Info promo, diskon, produk terupdate, & giveaway!</p>
@@ -228,310 +149,93 @@
                 </div>
                 <i class="fa-solid fa-arrow-right-to-bracket text-sm opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
             </a>
-
-            <a href="https://chat.whatsapp.com/LcN0CBwyi751xfo9RATrXp" target="_blank" class="glass-card flex items-center justify-between w-full p-5 hover:bg-brandLime hover:text-zinc-950 border border-zinc-850 hover:border-brandLime rounded-2xl transition-all duration-300 transform hover:-translate-y-1 group shadow-lg">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-zinc-900/80 flex items-center justify-center text-brandLime group-hover:bg-zinc-950 group-hover:text-brandLime transition-colors">
-                        <i class="fa-solid fa-gamepad text-2xl"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-extrabold text-sm tracking-wide">GRUP MABAR</h3>
-                        <p class="text-xs text-zinc-500 group-hover:text-zinc-800 transition-colors mt-0.5">Cari teman mabar ML, FF, PUBG & turnamen seru!</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right-to-bracket text-sm opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
-            </a>
-
-            <a href="https://chat.whatsapp.com/JwfbqpUm1AJHB44RaZZMq7" target="_blank" class="glass-card flex items-center justify-between w-full p-5 hover:bg-brandLime hover:text-zinc-950 border border-zinc-850 hover:border-brandLime rounded-2xl transition-all duration-300 transform hover:-translate-y-1 group shadow-lg">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-zinc-900/80 flex items-center justify-center text-brandLime group-hover:bg-zinc-950 group-hover:text-brandLime transition-colors">
-                        <i class="fa-solid fa-handshake text-2xl"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-extrabold text-sm tracking-wide">GRUP JUAL/BELI AKUN</h3>
-                        <p class="text-xs text-zinc-500 group-hover:text-zinc-800 transition-colors mt-0.5">Jual atau beli akun sesuai kriteriamu!</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right-to-bracket text-sm opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
-            </a>
-        </div>
+            </div>
 
         <div id="tab-catalog" class="hidden space-y-6">
+            <div onclick="window.location.href='/qris'" class="glass-card p-5 rounded-[2rem] border border-brandLime/40 hover:border-brandLime hover:shadow-[0_0_25px_rgba(163,221,2,0.25)] transition-all duration-300 cursor-pointer flex items-center justify-between group">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-brandLime/15 flex items-center justify-center text-brandLime group-hover:bg-brandLime group-hover:text-zinc-950 transition-all duration-300 shadow-inner"><i class="fa-solid fa-qrcode text-2xl animate-pulse"></i></div>
+                    <div class="text-left">
+                        <span class="text-[9px] font-black text-brandLime tracking-widest uppercase">METODE INSTAN</span>
+                        <h3 class="font-black text-sm text-white tracking-wide uppercase mt-0.5">BAYAR CEPAT VIA QRIS</h3>
+                        <p class="text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors mt-0.5">Buka generator QRIS resmi REXITH di sini.</p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:border-brandLime group-hover:text-brandLime transition-all duration-300"><i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-0.5 transition-transform"></i></div>
+            </div>
+
             <div class="grid grid-cols-2 gap-4">
                 <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-coins text-lg"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3"><i class="fa-solid fa-coins text-lg"></i></div>
                         <h4 class="font-extrabold text-sm text-white">TOP UP GAME</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Isi Diamond MLBB, Free Fire, Genshin, DLL. Proses Cepat & Harga Murah.</p>
+                        <p class="text-[11px] text-zinc-500 mt-1">Isi Diamond MLBB, Free Fire, DLL. Cepat & Murah.</p>
                     </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Top%20Up%20Game" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
+                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">Order Via WA</a>
                 </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-crown text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">APLIKASI PREMIUM</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Netflix, Gemini, Canva, YouTube Premium Murah & Bergaransi .</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Aplikasi%20Premium" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
                 </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-gauge-high text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">JOKI</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Jasa Joki Rank, Eksplorasi, Quest, DLL. Cepat & 100% aman.</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Jasa%20Joki" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-wallet text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">PULSA/E-WALLET</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Isi Saldo E-Wallet Gopay, Ovo, Dana, Shopeepay, pulsa all operator & PLN.</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Pulsa%20atau%20E-wallet" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-rocket text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">SOCIAL MEDIA MARKETING</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Suntik Follower, Like, View & Comment Ke Sosial Media seperti TikTok, Instagram, Facebook DLL.</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Jasa%20Social%20Media%20Marketing" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-robot text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">BOT WHATSAPP</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Kelola Grup Whatsapp Dengan Mudah Menggunakan Bot Profesional.</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Sewa%20Bot%20Whatsapp" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-globe text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">WEBSITE</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Buat Website Modern Dengan Fitur Canggih</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20order%20Pembuatan%20Website" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl border border-zinc-900 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-brandLime/10 flex items-center justify-center text-brandLime mb-3">
-                            <i class="fa-solid fa-users text-lg"></i>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-white">REKENING BERSAMA</h4>
-                        <p class="text-[11px] text-zinc-500 mt-1">Transaksi aman dan terpercaya menggunakan perantara admin</p>
-                    </div>
-                    <a href="https://wa.me/6282134795760?text=Halo%20Admin%20Rexith,%20saya%20mau%20rekber" target="_blank" class="mt-4 block text-center bg-zinc-900 hover:bg-brandLime text-zinc-300 hover:text-zinc-950 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-zinc-850 hover:border-brandLime">
-                        Order Via WA
-                    </a>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl border border-zinc-900">
-                <h4 class="text-xs font-black text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brandLime"></span> Metode Pembayaran
-                </h4>
-                <div class="flex flex-wrap gap-3 items-center opacity-60">
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">QRIS</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">DANA</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">SHOPEEPAY</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">GOPAY</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">BANK BCA</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">BANK JAGO</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">NEOBANK</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">SEABANK</span>
-                    <span class="px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-lg text-xs font-black tracking-wider text-slate-400">PAYPAL</span>
-                </div>
-            </div>
         </div>
 
         <div class="text-center space-y-2 py-4">
             <p class="text-[10px] text-zinc-600 font-bold tracking-widest uppercase">&copy; 2026 REXITH. Powered by PrasDemitry.</p>
-            <div class="flex justify-center gap-2 text-[9px] text-zinc-700 font-semibold uppercase">
-                <span>100% Secure</span>
-                <span>•</span>
-                <span>Anti-Drama</span>
-            </div>
         </div>
-
     </div>
 
+    <button onclick="window.location.href='/qris'" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-zinc-950/90 hover:bg-brandLime text-brandLime hover:text-zinc-950 rounded-full border border-brandLime/40 flex items-center justify-center shadow-[0_0_20px_rgba(163,221,2,0.3)] transition-all duration-300 group active:scale-95">
+        <span class="absolute inset-0 rounded-full border-2 border-brandLime/30 animate-ping group-hover:hidden"></span>
+        <i class="fa-solid fa-qrcode text-2xl"></i>
+    </button>
+
     <script>
-        // Tab Switcher Logic
         function switchTab(tabName) {
             const tabLinks = document.getElementById('tab-links');
             const tabCatalog = document.getElementById('tab-catalog');
             const btnLinks = document.getElementById('btn-links');
             const btnCatalog = document.getElementById('btn-catalog');
-
             if (tabName === 'links') {
-                tabLinks.classList.remove('hidden');
-                tabCatalog.classList.add('hidden');
-                btnLinks.classList.add('bg-brandLime', 'text-zinc-950');
-                btnLinks.classList.remove('text-zinc-500', 'hover:text-white');
-                btnCatalog.classList.remove('bg-brandLime', 'text-zinc-950');
-                btnCatalog.classList.add('text-zinc-500', 'hover:text-white');
-            } else if (tabName === 'catalog') {
-                tabLinks.classList.add('hidden');
-                tabCatalog.classList.remove('hidden');
-                btnCatalog.classList.add('bg-brandLime', 'text-zinc-950');
-                btnCatalog.classList.remove('text-zinc-500', 'hover:text-white');
-                btnLinks.classList.remove('bg-brandLime', 'text-zinc-950');
-                btnLinks.classList.add('text-zinc-500', 'hover:text-white');
+                tabLinks.classList.remove('hidden'); tabCatalog.classList.add('hidden');
+                btnLinks.add('bg-brandLime', 'text-zinc-950'); btnCatalog.add('text-zinc-500');
+            } else {
+                tabLinks.classList.add('hidden'); tabCatalog.classList.remove('hidden');
+                btnCatalog.add('bg-brandLime', 'text-zinc-950'); btnLinks.add('text-zinc-500');
             }
         }
 
-        // --- SKRIP ANIMASI GRID BEAM: LEBIH CEPAT, CERAH, & MULTIDIRECTIONAL ---
+        // Script Animasi Grid Beams Latar Belakang
         const canvas = document.getElementById('grid-beams');
         const ctx = canvas.getContext('2d');
-
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-
-        const gridSize = 40; 
-        const beams = [];
-        const maxBeams = 14; // Ditambah sedikit agar layar terasa dinamis
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
+        const gridSize = 40; const beams = []; const maxBeams = 14;
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
         class Beam {
-            constructor() {
-                this.reset();
-            }
-
+            constructor() { this.reset(); }
             reset() {
                 this.type = Math.random() > 0.5 ? 'H' : 'V';
-                
-                // MENGATUR KECEPATAN: Ditingkatkan menjadi kisaran 2.5 - 4.5 piksel per frame
                 const baseSpeed = Math.random() * 2 + 2.5;
-                // Menentukan arah pergerakan secara acak (Positif / Negatif)
                 this.direction = Math.random() > 0.5 ? 1 : -1;
-                this.speed = baseSpeed * this.direction; 
-                
-                this.length = Math.random() * 120 + 100; // Panjang berkas cahaya dibuat ideal
-
-                if (this.type === 'H') {
-                    // Jalur Horizontal
-                    this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize;
-                    // Muncul acak dari KIRI (jika speed positif) atau dari KANAN (jika speed negatif)
-                    this.x = this.speed > 0 ? -this.length : width + this.length;
-                } else {
-                    // Jalur Vertikal
-                    this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize;
-                    // Muncul acak dari ATAS (jika speed positif) atau dari BAWAH (jika speed negatif)
-                    this.y = this.speed > 0 ? -this.length : height + this.length;
-                }
-                
-                // Opasitas dasar berkas cahaya ditingkatkan agar lebih solid terlihat
+                this.speed = baseSpeed * this.direction; this.length = Math.random() * 120 + 100;
+                if (this.type === 'H') { this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize; this.x = this.speed > 0 ? -this.length : width + this.length; }
+                else { this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize; this.y = this.speed > 0 ? -this.length : height + this.length; }
                 this.alpha = Math.random() * 0.4 + 0.5;
             }
-
             update() {
-                if (this.type === 'H') {
-                    this.x += this.speed;
-                    if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) {
-                        this.reset();
-                    }
-                } else {
-                    this.y += this.speed;
-                    if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) {
-                        this.reset();
-                    }
-                }
+                if (this.type === 'H') { this.x += this.speed; if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) this.reset(); }
+                else { this.y += this.speed; if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) this.reset(); }
             }
-
             draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                
-                let gradient;
-                // Gradient disesuaikan mengikuti arah pergerakan laser asli
-                if (this.type === 'H') {
-                    gradient = ctx.createLinearGradient(this.x, this.y, this.x + (this.speed > 0 ? -this.length : this.length), this.y);
-                } else {
-                    gradient = ctx.createLinearGradient(this.x, this.y, this.x, this.y + (this.speed > 0 ? -this.length : this.length));
-                }
-
-                // WARNA BARU YANG LEBIH CERAH: Menggunakan super bright neon lime #baff02
-                gradient.addColorStop(0, '#baff02'); 
-                gradient.addColorStop(1, 'transparent'); 
-
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = 1.8; // Sedikit lebih tebal agar terlihat jelas
-                
-                // OPTIMASI NEON GLOW: Efek pendaran diperluas dan diperkuat cahayanya
-                ctx.shadowBlur = 14;  
-                ctx.shadowColor = '#baff02';
-
+                ctx.save(); ctx.globalAlpha = this.alpha;
+                let gradient = this.type === 'H' ? ctx.createLinearGradient(this.x, this.y, this.x + (this.speed > 0 ? -this.length : this.length), this.y) : ctx.createLinearGradient(this.x, this.y, this.x, this.y + (this.speed > 0 ? -this.length : this.length));
+                gradient.addColorStop(0, '#baff02'); gradient.addColorStop(1, 'transparent');
+                ctx.strokeStyle = gradient; ctx.lineWidth = 1.8; ctx.shadowBlur = 14; ctx.shadowColor = '#baff02';
                 ctx.beginPath();
-                if (this.type === 'H') {
-                    ctx.moveTo(this.x, this.y);
-                    ctx.lineTo(this.x + (this.speed > 0 ? -this.length : this.length), this.y);
-                } else {
-                    ctx.moveTo(this.x, this.y);
-                    ctx.lineTo(this.x, this.y + (this.speed > 0 ? -this.length : this.length));
-                }
-                ctx.stroke();
-                ctx.restore();
+                if (this.type === 'H') { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + (this.speed > 0 ? -this.length : this.length), this.y); }
+                else { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x, this.y + (this.speed > 0 ? -this.length : this.length)); }
+                ctx.stroke(); ctx.restore();
             }
         }
-
-        // Inisialisasi berkas cahaya awal dengan jeda bertahap
-        for (let i = 0; i < maxBeams; i++) {
-            setTimeout(() => {
-                beams.push(new Beam());
-            }, i * 250); // Jeda kemunculan dipercepat agar flow di awal langsung ramai
-        }
-
-        // Loop Rendering utama animasi
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            beams.forEach(beam => {
-                beam.update();
-                beam.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
+        for (let i = 0; i < maxBeams; i++) { setTimeout(() => { beams.push(new Beam()); }, i * 250); }
+        function animate() { ctx.clearRect(0, 0, width, height); beams.forEach(beam => { beam.update(); beam.draw(); }); requestAnimationFrame(animate); }
         animate();
     </script>
 </body>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rexith Official - QRIS Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandLime: '#a3dd02',
+                        darkBg: '#050505',
+                        cardBg: '#0e1015'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        body {
+            background: radial-gradient(circle at center, #11140e 0%, #030304 100%);
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .cyber-card {
+            background: linear-gradient(135deg, rgba(14, 16, 21, 0.98) 0%, rgba(5, 5, 5, 1) 100%);
+            border: 2px solid rgba(163, 221, 2, 0.35);
+            box-shadow: 0 0 35px rgba(163, 221, 2, 0.15), inset 0 0 20px rgba(163, 221, 2, 0.05);
+        }
+        @keyframes laserScan {
+            0%, 100% { top: 2%; opacity: 0.05; }
+            50% { top: 98%; opacity: 0.6; }
+        }
+        .scan-line {
+            position: absolute; left: 8px; right: 8px; height: 3px; background: #a3dd02;
+            box-shadow: 0 0 10px #a3dd02, 0 0 20px #a3dd02; animation: laserScan 4s ease-in-out infinite;
+            z-index: 30; pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen flex flex-col items-center justify-start p-4 md:p-8 relative selection-none">
+
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0"></div>
+    <canvas id="grid-beams" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-90"></canvas>
+
+    <div class="w-full max-w-sm flex justify-between items-center mb-6 z-10">
+        <button onclick="window.location.href='/'" class="bg-zinc-950/80 hover:bg-brandLime hover:text-zinc-950 text-brandLime border border-brandLime/40 px-4 py-2 rounded-xl text-xs font-black tracking-wider uppercase transition-all duration-300 flex items-center gap-2 backdrop-blur-md shadow-lg">
+            <i class="fa-solid fa-arrow-left"></i> Menu Utama
+        </button>
+    </div>
+
+    <div class="w-full max-w-sm space-y-4 z-10">
+        <div class="cyber-card p-6 rounded-[2.5rem] relative overflow-hidden text-center">
+            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brandLime opacity-60"></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brandLime opacity-60"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-brandLime opacity-60"></div>
+            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brandLime opacity-60"></div>
+            <div class="scan-line"></div>
+
+            <div class="flex justify-between items-center mb-5 px-1">
+                <div class="flex flex-col items-start text-left">
+                    <span class="text-[11px] font-black tracking-widest text-brandLime uppercase leading-none">QRIS STANDAR</span>
+                    <span class="text-[7.5px] font-bold text-zinc-500 uppercase tracking-tighter leading-none mt-1">Pembayaran Nasional</span>
+                </div>
+                <div class="flex items-center justify-center gap-1.5 bg-zinc-950 px-2.5 rounded-lg border border-zinc-900 h-7">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brandLime animate-pulse"></span>
+                    <span class="text-[9px] font-black text-white tracking-widest data-v">GPN</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-3 mb-6">
+                <h2 class="text-3xl font-black text-white tracking-widest uppercase leading-none">REXITH</h2>
+                <div class="flex items-center justify-center bg-brandLime/10 border border-brandLime/20 px-3 rounded-md h-7">
+                    <p class="text-[9px] font-mono font-bold text-brandLime tracking-wide">NMID: ID1026536065695</p>
+                </div>
+            </div>
+
+            <div class="relative w-64 h-64 mx-auto bg-white rounded-3xl p-4 flex items-center justify-center border-2 border-brandLime shadow-[0_0_30px_rgba(163,221,2,0.3)] overflow-hidden">
+                <canvas id="qris-qr-code" class="w-full h-full object-contain"></canvas>
+            </div>
+
+            <div class="mt-6 space-y-4">
+                <p class="text-xs font-black text-white uppercase tracking-widest">SATU QRIS UNTUK SEMUA</p>
+                <p class="text-[9px] text-zinc-500 font-semibold tracking-wide">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
+            </div>
+        </div>
+
+        <div class="bg-zinc-950/85 border border-zinc-900 rounded-2xl p-4 space-y-3 text-left">
+            <div class="flex items-center justify-between">
+                <p class="text-[11px] font-black text-brandLime uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brandLime animate-ping"></span> SINKRON KODE
+                </p>
+                <button onclick="document.getElementById('qr-file-input').click()" class="bg-brandLime/10 hover:bg-brandLime text-brandLime hover:text-zinc-950 border border-brandLime/30 px-3 py-1.5 rounded-lg text-[9px] font-black transition-all duration-300">UPLOAD IMAGE</button>
+                <input type="file" id="qr-file-input" class="hidden" accept="image/*" onchange="processQRImage(this)">
+            </div>
+            <div id="sync-status" class="hidden p-2 rounded-lg bg-zinc-900 text-[10px] font-mono break-all text-zinc-400"></div>
+        </div>
+
+        <button onclick="downloadQRIS()" class="w-full bg-brandLime hover:bg-white text-zinc-950 font-black text-sm uppercase py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg">
+            <i class="fa-solid fa-download text-lg animate-bounce"></i> Unduh Gambar (PNG)
+        </button>
+    </div>
+
+    <div style="position: absolute; left: -9999px; top: -9999px;">
+        <div id="qris-download-template" style="width: 450px; height: 680px; padding: 30px; background: linear-gradient(135deg, #0e1015 0%, #050505 100%); border: 3px solid #a3dd02; border-radius: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div style="text-align: left;"><span style="font-size: 13px; font-weight: 900; color: #a3dd02;">QRIS STANDAR</span></div>
+                <div style="background-color: #000; padding: 0 12px; height: 28px; border-radius: 10px; color: #fff; font-size: 11px; font-weight: 900;">GPN</div>
+            </div>
+            <h2 style="font-size: 36px; font-weight: 900; color: #fff; margin: 0;">REXITH</h2>
+            <div style="width: 260px; height: 260px; background-color: #fff; border-radius: 28px; padding: 16px; display: flex; align-items: center; justify-content: center; border: 2px solid #a3dd02;">
+                <img id="qris-export-image" src="" alt="QRIS" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+            <div style="font-size: 9px; font-weight: 900; color: #52525b;">⚡ REXITH OFFICIAL PAYMENT • 100% SECURE</div>
+        </div>
+    </div>
+
+    <script>
+        let qrGenerator = null;
+        let qrisDataString = '00020101021126610016ID.CO.SHOPEE.WWW01189360091800232225040208232225040303UMI51440014ID.CO.QRIS.WWW0215ID10265360656950303UMI5204581653033605802ID5906REXITH6005DEMAK61055956762070703A0163045663';
+
+        if(localStorage.getItem('qris_string_rexith')) { qrisDataString = localStorage.getItem('qris_string_rexith'); }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initQRCode(qrisDataString);
+            if(localStorage.getItem('qris_string_rexith')) { showSuccessStatus(qrisDataString); }
+        });
+
+        function initQRCode(dataText) {
+            qrGenerator = new QRious({
+                element: document.getElementById('qris-qr-code'),
+                value: dataText, size: 400, background: '#ffffff', foreground: '#000000', level: 'H'
+            });
+            document.getElementById('qris-export-image').src = qrGenerator.toDataURL();
+        }
+
+        function processQRImage(input) {
+            const statusDiv = document.getElementById('sync-status');
+            statusDiv.classList.remove('hidden');
+            statusDiv.innerHTML = '<span>Menguraikan...</span>';
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+                        canvas.width = img.width; canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0, img.width, img.height);
+                        const imageData = ctx.getImageData(0, 0, img.width, img.height);
+                        const code = jsQR(imageData.data, imageData.width, imageData.height);
+                        if (code) {
+                            qrisDataString = code.data; localStorage.setItem('qris_string_rexith', qrisDataString);
+                            qrGenerator.value = qrisDataString;
+                            document.getElementById('qris-export-image').src = qrGenerator.toDataURL();
+                            showSuccessStatus(qrisDataString);
+                        } else {
+                            statusDiv.innerHTML = '<span class="text-red-500">Gagal memindai gambar!</span>';
+                        }
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showSuccessStatus(stringData) {
+            const statusDiv = document.getElementById('sync-status');
+            statusDiv.classList.remove('hidden');
+            statusDiv.innerHTML = `<div class="text-brandLime font-bold">SINKRONISASI AKTIF!</div><div class="text-[8px] break-all">${stringData}</div>`;
+        }
+
+        function downloadQRIS() {
+            const targetTemplate = document.getElementById('qris-download-template');
+            html2canvas(targetTemplate, { useCORS: true, scale: 3, backgroundColor: '#050505', width: 450, height: 680 }).then(canvas => {
+                const link = document.createElement('a'); link.download = 'QRIS_REXITH_CYBER_PREMIUM.png';
+                link.href = canvas.toDataURL('image/png'); link.click();
+            });
+        }
+
+        // Script Animasi Beams Latar Belakang Tetap Ada
+        const canvas = document.getElementById('grid-beams');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
+        const gridSize = 40; const beams = []; const maxBeams = 14;
+        class Beam {
+            constructor() { this.reset(); }
+            reset() {
+                this.type = Math.random() > 0.5 ? 'H' : 'V';
+                this.speed = (Math.random() * 2 + 2.5) * (Math.random() > 0.5 ? 1 : -1); this.length = Math.random() * 120 + 100;
+                if (this.type === 'H') { this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize; this.x = this.speed > 0 ? -this.length : width + this.length; }
+                else { this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize; this.y = this.speed > 0 ? -this.length : height + this.length; }
+                this.alpha = Math.random() * 0.4 + 0.5;
+            }
+            update() {
+                if (this.type === 'H') { this.x += this.speed; if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) this.reset(); }
+                else { this.y += this.speed; if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) this.reset(); }
+            }
+            draw() {
+                ctx.save(); ctx.globalAlpha = this.alpha;
+                let gradient = this.type === 'H' ? ctx.createLinearGradient(this.x, this.y, this.x + (this.speed > 0 ? -this.length : this.length), this.y) : ctx.createLinearGradient(this.x, this.y, this.x, this.y + (this.speed > 0 ? -this.length : this.length));
+                gradient.addColorStop(0, '#baff02'); gradient.addColorStop(1, 'transparent');
+                ctx.strokeStyle = gradient; ctx.lineWidth = 1.8; ctx.shadowBlur = 14; ctx.shadowColor = '#baff02';
+                ctx.beginPath();
+                if (this.type === 'H') { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + (this.speed > 0 ? -this.length : this.length), this.y); }
+                else { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x, this.y + (this.speed > 0 ? -this.length : this.length)); }
+                ctx.stroke(); ctx.restore();
+            }
+        }
+        for (let i = 0; i < maxBeams; i++) { setTimeout(() => { beams.push(new Beam()); }, i * 250); }
+        function animate() { ctx.clearRect(0, 0, width, height); beams.forEach(beam => { beam.update(); beam.draw(); }); requestAnimationFrame(animate); }
+        animate();
+    </script>
+</body>
+</html>
