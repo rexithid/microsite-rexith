@@ -163,72 +163,86 @@
         </button>
     </div>
 
-    <!-- Container GPN -->
-<div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <div style="position: absolute; left: -9999px; top: -9999px;">
+    <div id="qris-download-template" style="width: 450px; height: 680px; padding: 30px; box-sizing: border-box; background: linear-gradient(135deg, #0e1015 0%, #050505 100%); border: 3px solid #a3dd02; border-radius: 40px; display: block; position: relative; overflow: hidden; text-align: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 35px; height: 35px; border-top: 3px solid #a3dd02; border-left: 3px solid #a3dd02;"></div>
+        <div style="position: absolute; top: 0; right: 0; width: 35px; height: 35px; border-top: 3px solid #a3dd02; border-right: 3px solid #a3dd02;"></div>
+        <div style="position: absolute; bottom: 0; left: 0; width: 35px; height: 35px; border-bottom: 3px solid #a3dd02; border-left: 3px solid #a3dd02;"></div>
+        <div style="position: absolute; bottom: 0; right: 0; width: 35px; height: 35px; border-bottom: 3px solid #a3dd02; border-right: 3px solid #a3dd02;"></div>
+
+        <!-- Bagian judul dan GPN -->
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 35px;">
+            <div style="text-align: left; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; font-weight: 900; letter-spacing: 0.15em; color: #a3dd02; line-height: 1.1;">QRIS STANDAR</span>
+                <span style="font-size: 8.5px; font-weight: 700; color: #71717a; letter-spacing: -0.02em; margin-top: 2px;">Pembayaran Nasional</span>
+            </div>
+            <!-- Container GPN agar di tengah -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px;">
   <div style="display: flex; align-items: center; gap: 6px; background-color: #000; padding: 5px 12px; border-radius: 10px; border: 1px solid #27272a;">
     <span style="display: block; width: 6px; height: 6px; border-radius: 50%; background-color: #a3dd02;"></span>
     <span style="font-size: 11px; font-weight: 900; color: #fff; letter-spacing: 0.05em;">GPN</span>
   </div>
 </div>
+        </div>
 
-<!-- Bagian judul "REXITH" dan NMID -->
-<div style="width: 100%; text-align: center; margin-bottom: 30px;">
+        <!-- Bagian judul "REXITH" dan NMID -->
+        <div style="width: 100%; text-align: center; margin-bottom: 30px;">
   <h2 style="margin-bottom: 12px; font-size: 36px; font-weight: 900; color: #fff; letter-spacing: 0.15em; line-height: 1;">REXITH</h2>
-  <div style="display: inline-block; background-color: rgba(163, 221, 2, 0.1); border: 1px solid rgba(163, 221, 2, 0.2); border-radius: 8px; padding: 7px 25px; font-size: 10px; font-family: monospace; font-weight: 700; color: #a3dd02;">
+  <div style="display: inline-block; background-color: rgba(163, 221, 2, 0.1); border: 1px solid rgba(163, 221, 2, 0.2); border-radius: 8px; padding: 7px 25px; font-size: 10px; font-family: monospace; font-weight: 700; color: #a3dd02; margin-top: 8px;">
     NMID: ID1026536065695
   </div>
 </div>
 
-<!-- Bagian QR code -->
-<div style="width: 260px; height: 260px; background-color: #ffffff; border-radius: 28px; padding: 16px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid #a3dd02; box-shadow: 0 0 25px rgba(163, 221, 2, 0.2); margin: 0 auto 35px auto;">
-  <img id="qris-export-image" src="" alt="QRIS Code" style="width: 100%; height: 100%; object-fit: contain; image-rendering: -webkit-optimize-contrast;" />
-</div>
+        <!-- Bagian QR code -->
+        <div style="width: 260px; height: 260px; background-color: #ffffff; border-radius: 28px; padding: 16px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid #a3dd02; box-shadow: 0 0 25px rgba(163, 221, 2, 0.2); overflow: hidden; margin: 0 auto 35px auto;">
+            <img id="qris-export-image" src="" alt="QRIS Code" style="width: 100%; height: 100%; object-fit: contain; image-rendering: -webkit-optimize-contrast;" />
+        </div>
 
-<!-- Teks bawah dan icon kategori -->
-<div style="width: 100%; position: relative; margin-top: 20px; padding: 0 30px; box-sizing: border-box;">
-  <!-- Teks bawah -->
-  <div style="margin-bottom: 15px;">
-    <p style="font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 0.1em; margin: 0;">SATU QRIS UNTUK SEMUA</p>
-    <p style="font-size: 10px; color: #a1a1aa; font-weight: 600; letter-spacing: 0.02em; margin-top: 4px;">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
-  </div>
+        <!-- Bagian teks bawah -->
+        <div style="width: 100%; position: absolute; bottom: 30px; left: 0; right: 0; padding: 0 30px; box-sizing: border-box;">
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 0.1em; margin: 0;">SATU QRIS UNTUK SEMUA</p>
+                <p style="font-size: 10px; color: #a1a1aa; font-weight: 600; letter-spacing: 0.02em; margin-top: 4px;">Dana, OVO, GoPay, LinkAja, ShopeePay & M-Banking</p>
+            </div>
 
-  <!-- Daftar icon dan kategori -->
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding-top: 15px; border-top: 1px solid rgba(39, 39, 42, 0.6); margin-bottom: 15px;">
-    <!-- E-Wallet -->
-    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center;">
-      <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-      </svg>
-      <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">E-Wallet</span>
-    </div>
-    <!-- M-Bank -->
-    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center;">
-      <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-      </svg>
-      <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">M-Bank</span>
-    </div>
-    <!-- Aman -->
-    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center;">
-      <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-      </svg>
-      <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Aman</span>
-    </div>
-    <!-- Instan -->
-    <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center;">
-      <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-      </svg>
-      <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Instan</span>
-    </div>
-  </div>
+            <!-- Daftar icon dan kategori -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding-top: 15px; border-top: 1px solid rgba(39, 39, 42, 0.6); margin-bottom: 15px;">
+                <!-- E-Wallet -->
+                <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">E-Wallet</span>
+                </div>
+                <!-- M-Bank -->
+                <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">M-Bank</span>
+                </div>
+                <!-- Aman -->
+                <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Aman</span>
+                </div>
+                <!-- Instan -->
+                <div style="background-color: rgba(0, 0, 0, 0.5); padding: 8px 4px; border-radius: 10px; border: 1px solid #27272a; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg style="width: 18px; height: 18px; color: #a3dd02; margin-bottom: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span style="font-size: 8px; font-weight: 900; text-transform: uppercase; color: #71717a;">Instan</span>
+                </div>
+            </div>
 
-  <!-- Footer info -->
-  <div style="font-size: 9px; font-weight: 900; color: #52525b; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px;">
-    ⚡ REXITH OFFICIAL PAYMENT • 100% SECURE
-  </div>
-</div>
+            <!-- Footer info -->
+            <div style="font-size: 9px; font-weight: 900; color: #52525b; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px;">
+                ⚡ REXITH OFFICIAL PAYMENT • 100% SECURE
+            </div>
+        </div>
+    </div>
 
     <script>
         // ==========================================
