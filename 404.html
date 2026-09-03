@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Halaman Tidak Ditemukan | Rexith Official</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandLime: '#a3dd02',
+                        darkBg: '#050505',
+                        cardBg: '#0e1015'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+        body {
+            background: radial-gradient(circle at center, #11140e 0%, #030304 100%);
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        @keyframes logoIntro {
+            0% { transform: scale(0.8) rotate(-10deg); opacity: 0; filter: blur(10px); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0px); }
+        }
+
+        @keyframes floatAndGlow {
+            0%, 100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 15px rgba(163, 221, 2, 0.35));
+            }
+            50% {
+                transform: translateY(-8px);
+                filter: drop-shadow(0 0 30px rgba(163, 221, 2, 0.65));
+            }
+        }
+
+        @keyframes contentFadeIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes glitch404 {
+            0%, 100% { text-shadow: 0 0 25px rgba(163,221,2,0.5); transform: translate(0,0); }
+            20% { text-shadow: -3px 0 #ff2d55, 3px 0 #00fff9, 0 0 25px rgba(163,221,2,0.5); transform: translate(-1px,1px); }
+            21% { text-shadow: 0 0 25px rgba(163,221,2,0.5); transform: translate(0,0); }
+            62% { text-shadow: 3px 0 #ff2d55, -3px 0 #00fff9, 0 0 25px rgba(163,221,2,0.5); transform: translate(1px,-1px); }
+            63% { text-shadow: 0 0 25px rgba(163,221,2,0.5); transform: translate(0,0); }
+        }
+
+        .logo-animation {
+            animation: logoIntro 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                        floatAndGlow 4s ease-in-out infinite 1.2s;
+        }
+
+        .content-animation {
+            opacity: 0;
+            animation: contentFadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        .glitch-text {
+            opacity: 0;
+            animation: contentFadeIn 0.8s ease-out 0.2s forwards,
+                       glitch404 4.5s ease-in-out 1.2s infinite;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a3dd02; }
+
+        .glass-card {
+            background: rgba(14, 16, 21, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen flex flex-col items-center justify-center p-4 md:p-8 relative selection-none">
+
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0"></div>
+    <canvas id="grid-beams" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-90"></canvas>
+
+    <div id="main-container" class="w-full max-w-xl z-10 text-center">
+
+        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] border border-zinc-800/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-brandLime/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="logo-animation relative w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-2 border-dashed border-brandLime/40 animate-[spin_30s_linear_infinite]"></div>
+                <div class="absolute inset-2 rounded-full border border-brandLime/25"></div>
+                <div class="w-[85%] h-[85%] rounded-full overflow-hidden border-2 border-brandLime bg-zinc-950 flex items-center justify-center shadow-[0_0_25px_rgba(163,221,2,0.4)]">
+                    <img src="logo_transparan.png" alt="Rexith Official" class="w-[78%] h-[78%] object-contain" />
+                </div>
+            </div>
+
+            <h1 class="glitch-text text-7xl md:text-8xl font-black text-brandLime mb-2 tracking-wider">404</h1>
+
+            <div class="inline-flex items-center gap-2 bg-brandLime/10 border border-brandLime/30 px-4 py-1.5 rounded-full mb-6 content-animation delay-2">
+                <span class="w-2 h-2 rounded-full bg-brandLime animate-pulse"></span>
+                <span class="text-xs font-extrabold text-brandLime uppercase tracking-widest">Sinyal Terputus</span>
+                <span class="w-2 h-2 rounded-full bg-brandLime animate-pulse"></span>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-extrabold text-white mb-3 content-animation delay-2">Halaman Tidak Ditemukan</h2>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-8 max-w-sm mx-auto content-animation delay-3">
+                Sepertinya link yang kamu tuju sudah tidak berlaku, salah ketik, atau memang belum pernah ada di sistem kami.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 content-animation delay-4">
+                <a href="/" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-brandLime text-zinc-950 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl hover:shadow-[0_0_25px_rgba(163,221,2,0.5)] hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-solid fa-house"></i>
+                    Kembali ke Beranda
+                </a>
+                <a href="https://wa.me/6282134795760" target="_blank" rel="noopener" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-zinc-900 border border-zinc-800 text-zinc-300 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl hover:border-brandLime hover:text-brandLime hover:-translate-y-1 transition-all duration-300">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Hubungi Admin
+                </a>
+            </div>
+        </div>
+
+        <p class="text-[10px] text-zinc-600 mt-6 tracking-widest uppercase content-animation delay-4">Rexith Official &copy; 2026</p>
+    </div>
+
+    <script>
+        // ==========================================
+        // SKRIP ANIMASI LATAR BELAKANG GRID BEAMS (identik dengan index.html)
+        // ==========================================
+        const canvas = document.getElementById('grid-beams');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const gridSize = 40;
+        const beams = [];
+        const maxBeams = 14;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Beam {
+            constructor() { this.reset(); }
+            reset() {
+                this.type = Math.random() > 0.5 ? 'H' : 'V';
+                const baseSpeed = Math.random() * 2 + 2.5;
+                this.direction = Math.random() > 0.5 ? 1 : -1;
+                this.speed = baseSpeed * this.direction;
+                this.length = Math.random() * 120 + 100;
+                if (this.type === 'H') {
+                    this.y = Math.floor(Math.random() * (height / gridSize)) * gridSize;
+                    this.x = this.speed > 0 ? -this.length : width + this.length;
+                } else {
+                    this.x = Math.floor(Math.random() * (width / gridSize)) * gridSize;
+                    this.y = this.speed > 0 ? -this.length : height + this.length;
+                }
+                this.alpha = Math.random() * 0.4 + 0.5;
+            }
+            update() {
+                if (this.type === 'H') {
+                    this.x += this.speed;
+                    if ((this.speed > 0 && this.x > width + this.length) || (this.speed < 0 && this.x < -this.length)) this.reset();
+                } else {
+                    this.y += this.speed;
+                    if ((this.speed > 0 && this.y > height + this.length) || (this.speed < 0 && this.y < -this.length)) this.reset();
+                }
+            }
+            draw() {
+                ctx.save(); ctx.globalAlpha = this.alpha;
+                let gradient = this.type === 'H' ? ctx.createLinearGradient(this.x, this.y, this.x + (this.speed > 0 ? -this.length : this.length), this.y) : ctx.createLinearGradient(this.x, this.y, this.x, this.y + (this.speed > 0 ? -this.length : this.length));
+                gradient.addColorStop(0, '#baff02'); gradient.addColorStop(1, 'transparent');
+                ctx.strokeStyle = gradient; ctx.lineWidth = 1.8; ctx.shadowBlur = 14; ctx.shadowColor = '#baff02';
+                ctx.beginPath();
+                if (this.type === 'H') { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + (this.speed > 0 ? -this.length : this.length), this.y); }
+                else { ctx.moveTo(this.x, this.y); ctx.lineTo(this.x, this.y + (this.speed > 0 ? -this.length : this.length)); }
+                ctx.stroke(); ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < maxBeams; i++) { setTimeout(() => { beams.push(new Beam()); }, i * 250); }
+        function animate() { ctx.clearRect(0, 0, width, height); beams.forEach(beam => { beam.update(); beam.draw(); }); requestAnimationFrame(animate); }
+        animate();
+    </script>
+</body>
+</html>
